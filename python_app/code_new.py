@@ -90,3 +90,29 @@ def main():
 if __name__ == "__main__":
     main()
 
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Database connection settings
+server = 'localhost'
+database = 'LibrarySystem'
+driver = 'ODBC Driver 17 for SQL Server'
+
+# Create SQLAlchemy connection string
+connection_string = (
+    f"mssql+pyodbc://@{server}/{database}"
+    f"?trusted_connection=yes&driver={driver}"
+)
+
+# Create engine
+engine = create_engine(connection_string)
+
+# Load cleaned CSVs
+books = pd.read_csv(r'C:\Users\Admin\Desktop\QA_module_5\python_app\cleaned_library_data.csv')
+customers = pd.read_csv(r'C:\Users\Admin\Desktop\QA_module_5\python_app\cleaned_customers.csv')
+
+# Upload to SQL Server
+books.to_sql(name='Books', con=engine, if_exists='replace', index=False)
+customers.to_sql(name='Customers', con=engine, if_exists='replace', index=False)
+
+print("Upload to SQL Server completed.")
