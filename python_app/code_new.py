@@ -62,8 +62,8 @@ def save_cleaned_data(df, output_path):
 
 def main():
     # -------- Books Dataset --------
-    books_file = r"C:\Users\Admin\Desktop\QA_module_5\python_app\03_Library Systembook.csv"
-    books_output = r"C:\Users\Admin\Desktop\QA_module_5\python_app\cleaned_library_data.csv"
+    books_file = r"03_Library Systembook.csv"
+    books_output = r"cleaned_library_data.csv"
     books_df = file_loader(books_file)
     books_df = clean_whitespace(books_df)
     books_df = na_checker(books_df, "Books")
@@ -75,8 +75,8 @@ def main():
     save_cleaned_data(books_df, books_output)
 
     # -------- Customers Dataset --------
-    customers_file = r"C:\Users\Admin\Desktop\QA_module_5\python_app\03_Library SystemCustomers.csv"
-    customers_output = r"C:\Users\Admin\Desktop\QA_module_5\python_app\cleaned_customers.csv"
+    customers_file = r"03_Library SystemCustomers.csv"
+    customers_output = r"cleaned_customers.csv"
     customers_df = file_loader(customers_file)
     customers_df = clean_whitespace(customers_df)
     customers_df = na_checker(customers_df, "Customers")
@@ -116,3 +116,6 @@ books.to_sql(name='Books', con=engine, if_exists='replace', index=False)
 customers.to_sql(name='Customers', con=engine, if_exists='replace', index=False)
 
 print("Upload to SQL Server completed.")
+
+if __name__ == "__main__":
+    main()
