@@ -1,0 +1,9 @@
+Dataset,Metric,Value
+Books,Initial Rows,114
+Books,Missing Values (Before),560
+Books,Duplicates Removed,92
+Books,Rows Dropped (NaNs),3
+Customers,Initial Rows,9
+Customers,Missing Values (Before),2
+Customers,Duplicates Removed,0
+Customers,Rows Dropped (NaNs),1
